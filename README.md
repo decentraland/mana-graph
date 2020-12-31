@@ -1,7 +1,9 @@
-# Decentraland collections graph
+# Decentraland MANA subgraph
 
-- Mainnet: https://thegraph.com/explorer/subgraph/decentraland/collections
-- Ropsten: https://thegraph.com/explorer/subgraph/decentraland/collections-ropsten
+- Mainnet: https://thegraph.com/explorer/subgraph/decentraland/mana?selected=logs
+- Ropsten: https://thegraph.com/explorer/subgraph/decentraland/mana-ropsten?selected=logs
+- Goerli: https://thegraph.com/explorer/subgraph/decentraland/mana-goerli?selected=logs
+- Mumbai: https://graph-play.decentraland.io/subgraphs/name/mana-mumbai
 
 ### Install
 
@@ -9,14 +11,17 @@
 npm run install
 ```
 
-### Deploy mainnet
+### Deploy
 
 ```bash
-npm run deploy:mainnet
+npm run deploy:{{network}
 ```
 
-### Deploy ropsten
+### Query Example
 
-```bash
-npm run deploy:ropsten
+```typescript
+accounts {
+  id
+  mana
+}
 ```
