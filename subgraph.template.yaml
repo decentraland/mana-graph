@@ -1,0 +1,29 @@
+specVersion: 0.0.2
+description: Decentraland collections
+repository: https://github.com/decentraland/collections-graph
+schema:
+  file: ./schema.graphql
+dataSources:
+  # ---------------------------------------------------------
+  # MANA ----------------------------------------------------
+  # ---------------------------------------------------------
+  - kind: ethereum/contract
+    name: MANAToken
+    network: {{network}}
+    source:
+      address: '{{mana_address}}'
+      abi: MANAToken
+      startBlock: {{mana_start_block}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      file: ./src/handlers/manaToken.ts
+      entities:
+        - Wallet
+      abis:
+        - name: MANAToken
+          file: ./abis/MANAToken.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer

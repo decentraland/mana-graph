@@ -1,0 +1,26 @@
+{
+  "name": "decentraland_mana_graph",
+  "version": "0.1.0",
+  "scripts": {
+    "codegen": "graph codegen --debug --output-dir src/entities/",
+    "prepare:mainnet": "mustache config/mainnet.json subgraph.template.yaml > subgraph.yaml && npm run codegen",
+    "prepare:ropsten": "mustache config/ropsten.json subgraph.template.yaml > subgraph.yaml && npm run codegen",
+    "prepare:goerli": "mustache config/goerli.json subgraph.template.yaml > subgraph.yaml && npm run codegen",
+    "prepare:mumbai": "mustache config/mumbai.json subgraph.template.yaml > subgraph.yaml && npm run codegen",
+    "deploy:mainnet": "npm run prepare:mainnet && npx graph deploy --debug  --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/  decentraland/mana",
+    "deploy:ropsten": "npm run prepare:ropsten && npx graph deploy --debug  --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/  decentraland/mana-ropsten",
+    "deploy:goerli": "npm run prepare:goerli && npx graph deploy --debug  --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/  decentraland/mana-goerli",
+    "deploy:mumbai": "npm run prepare:mumbai && npx graph deploy --node https://graph.decentraland.io --ipfs https://ipfs.infura.io:5001 mana-mumbai -v"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.18.0",
+    "@graphprotocol/graph-ts": "^0.18.1",
+    "mustache": "^4.0.1",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "prettier": "^1.19.1",
+    "tslint-plugin-prettier": "^2.0.1"
+  }
+}
