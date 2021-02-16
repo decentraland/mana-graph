@@ -44,7 +44,7 @@ export class Account extends Entity {
 
   get mana(): BigInt | null {
     let value = this.get("mana");
-    if (value === null) {
+    if (value === null || value.kind == ValueKind.NULL) {
       return null;
     } else {
       return value.toBigInt();
