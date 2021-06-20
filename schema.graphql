@@ -2,3 +2,14 @@ type Account @entity {
   id: ID! # ETH addr
   mana: BigInt # Amount of mana owned
 }
+
+type Log @entity {
+  id: ID!
+  txHash: String!
+  index: BigInt!
+  from: String!
+  to: String!
+  value: BigInt!
+  involved: String!
+  time: BigInt!
+}

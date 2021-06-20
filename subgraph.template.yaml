@@ -27,6 +27,12 @@ dataSources:
       eventHandlers:
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
+        - event: Transfer(address,address,uint256)
+          handler: handleTransfer1
+        - event: Transfer(indexed address,address,uint256)
+          handler: handleTransfer2
+        - event: Transfer(address,indexed address,uint256)
+          handler: handleTransfer3
         - event: Mint(indexed address,uint256)
           handler: handleMint
         - event: Burn(indexed address,uint256)

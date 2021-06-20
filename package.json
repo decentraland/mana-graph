@@ -12,7 +12,7 @@
     "deploy:ropsten": "npm run prepare:ropsten && npx graph deploy --debug  --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/  decentraland/mana-ethereum-ropsten",
     "deploy:goerli": "npm run prepare:goerli && npx graph deploy --debug  --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/  decentraland/mana-ethereum-goerli",
     "deploy:mumbai": "npm run prepare:mumbai && npx graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ decentraland/mana-matic-mumbai",
-    "deploy:matic": "npm run prepare:matic && npx graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ decentraland/mana-matic-mainnet",
+    "deploy:matic": "npm run prepare:matic && npx graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ nachomazzara/uniswapex_orders_rinkeby",
     "deploy:all": "npm run deploy:goerli && npm run deploy:ropsten && npm run deploy:mainnet && npm run deploy:mumbai npm run deploy:matic"
   },
   "devDependencies": {

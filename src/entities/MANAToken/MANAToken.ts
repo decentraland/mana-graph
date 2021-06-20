@@ -148,6 +148,84 @@ export class Transfer__Params {
   }
 }
 
+export class Transfer1 extends ethereum.Event {
+  get params(): Transfer1__Params {
+    return new Transfer1__Params(this);
+  }
+}
+
+export class Transfer1__Params {
+  _event: Transfer1;
+
+  constructor(event: Transfer1) {
+    this._event = event;
+  }
+
+  get from(): Address {
+    return this._event.parameters[0].value.toAddress();
+  }
+
+  get to(): Address {
+    return this._event.parameters[1].value.toAddress();
+  }
+
+  get value(): BigInt {
+    return this._event.parameters[2].value.toBigInt();
+  }
+}
+
+export class Transfer2 extends ethereum.Event {
+  get params(): Transfer2__Params {
+    return new Transfer2__Params(this);
+  }
+}
+
+export class Transfer2__Params {
+  _event: Transfer2;
+
+  constructor(event: Transfer2) {
+    this._event = event;
+  }
+
+  get from(): Address {
+    return this._event.parameters[0].value.toAddress();
+  }
+
+  get to(): Address {
+    return this._event.parameters[1].value.toAddress();
+  }
+
+  get value(): BigInt {
+    return this._event.parameters[2].value.toBigInt();
+  }
+}
+
+export class Transfer3 extends ethereum.Event {
+  get params(): Transfer3__Params {
+    return new Transfer3__Params(this);
+  }
+}
+
+export class Transfer3__Params {
+  _event: Transfer3;
+
+  constructor(event: Transfer3) {
+    this._event = event;
+  }
+
+  get from(): Address {
+    return this._event.parameters[0].value.toAddress();
+  }
+
+  get to(): Address {
+    return this._event.parameters[1].value.toAddress();
+  }
+
+  get value(): BigInt {
+    return this._event.parameters[2].value.toBigInt();
+  }
+}
+
 export class MANAToken extends ethereum.SmartContract {
   static bind(address: Address): MANAToken {
     return new MANAToken("MANAToken", address);
