@@ -1,48 +1,84 @@
-import { MANAToken, Transfer, Mint, Burn } from '../entities/ManaToken/ManaToken'
-import { Account } from '../entities/schema'
+import { Transfer, Mint, Burn } from '../entities/ManaToken/ManaToken'
+import { Account, Log } from '../entities/schema'
 
 const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 
 export function handleTransfer(event: Transfer): void {
-  let manaContract = MANAToken.bind(event.address)
+  let log = new Log(event.transaction.hash.toHexString() + '-' + event.logIndex.toString())
+  log.from = event.params.from.toHexString()
+  log.to = event.params.to.toHexString()
+  log.txHash = event.transaction.hash.toHexString()
+  log.index = event.logIndex
+  log.value = event.params.value
+  log.involved = event.params.from.toHexString() + '-' + event.params.to.toHexString()
+  log.time = event.block.timestamp
+  log.save()
 
-  let accountFromId = event.params.from.toHex()
+  let accountFromId = event.params.from.toHexString()
   if (accountFromId != ZERO_ADDRESS) {
-    let accountFrom = new Account(accountFromId)
+    let accountFrom = Account.load(accountFromId)
+    if (accountFrom == null) {
+      accountFrom = new Account(accountFromId)
+    }
 
-    accountFrom.mana = manaContract.balanceOf(event.params.from)
+    accountFrom.mana = accountFrom.mana.minus(event.params.value)
     accountFrom.save()
   }
 
-  let accountToId = event.params.to.toHex()
+  let accountToId = event.params.to.toHexString()
   if (accountToId != ZERO_ADDRESS) {
-    let accountTo = new Account(accountToId)
+    let accountTo = Account.load(accountToId)
+    if (accountTo == null) {
+      accountTo = new Account(accountToId)
+    }
 
-    accountTo.mana = manaContract.balanceOf(event.params.to)
+    accountTo.mana = accountTo.mana.plus(event.params.value)
     accountTo.save()
   }
 }
 
 export function handleMint(event: Mint): void {
-  let manaContract = MANAToken.bind(event.address)
+  let log = new Log(event.transaction.hash.toHexString() + '-' + event.logIndex.toString())
+  log.from = ZERO_ADDRESS
+  log.to = event.params.to.toHexString()
+  log.txHash = event.transaction.hash.toHexString()
+  log.index = event.logIndex
+  log.value = event.params.amount
+  log.involved = ZERO_ADDRESS + '-' + event.params.to.toHexString()
+  log.time = event.block.timestamp
+  log.save()
 
-  let accountToId = event.params.to.toHex()
+  let accountToId = event.params.to.toHexString()
   if (accountToId != ZERO_ADDRESS) {
-    let accountTo = new Account(accountToId)
+    let accountTo = Account.load(accountToId)
+    if (accountTo == null) {
+      accountTo = new Account(accountToId)
+    }
 
-    accountTo.mana = manaContract.balanceOf(event.params.to)
+    accountTo.mana = accountTo.mana.plus(event.params.amount)
     accountTo.save()
   }
 }
 
 export function handleBurn(event: Burn): void {
-  let manaContract = MANAToken.bind(event.address)
+  let log = new Log(event.transaction.hash.toHexString() + '-' + event.logIndex.toString())
+  log.from = event.params.burner.toHexString()
+  log.to = ZERO_ADDRESS
+  log.txHash = event.transaction.hash.toHexString()
+  log.index = event.logIndex
+  log.value = event.params.value
+  log.involved = event.params.burner.toHexString() + '-' + ZERO_ADDRESS
+  log.time = event.block.timestamp
+  log.save()
 
-  let accountFromId = event.params.burner.toHex()
+  let accountFromId = event.params.burner.toHexString()
   if (accountFromId != ZERO_ADDRESS) {
-    let accountTo = new Account(accountFromId)
+    let accountFrom = Account.load(accountFromId)
+    if (accountFrom == null) {
+      accountFrom = new Account(accountFromId)
+    }
 
-    accountTo.mana = manaContract.balanceOf(event.params.burner)
-    accountTo.save()
+    accountFrom.mana = accountFrom.mana.minus(event.params.value)
+    accountFrom.save()
   }
 }
