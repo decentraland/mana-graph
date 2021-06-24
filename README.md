@@ -25,9 +25,11 @@ The `id` is the Ethereum address
 #### Get first 100 account's balances
 
 ```typescript
-accounts {
-  id
-  mana
+{
+  accounts {
+    id
+    mana
+  }
 }
 ```
 
