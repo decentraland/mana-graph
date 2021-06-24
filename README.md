@@ -23,8 +23,9 @@ npm run deploy:{network}
 The `id` is the Ethereum address.
 
 Ethereum addresses should be passed lowercased:
-`0xB549B2442b2BD0a53795BC5cDcBFE0cAF7ACA9f8` ❌
-`0xb549b2442b2bd0a53795bc5cdcbfe0caf7aca9f8` ✅
+
+- `0xB549B2442b2BD0a53795BC5cDcBFE0cAF7ACA9f8` ❌
+- `0xb549b2442b2bd0a53795bc5cdcbfe0caf7aca9f8` ✅
 
 #### Get first 100 account's balances
 
