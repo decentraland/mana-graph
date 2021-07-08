@@ -58,6 +58,15 @@ export class Account extends Entity {
       this.set("mana", Value.fromBigInt(value as BigInt));
     }
   }
+
+  get updatedAt(): BigInt {
+    let value = this.get("updatedAt");
+    return value.toBigInt();
+  }
+
+  set updatedAt(value: BigInt) {
+    this.set("updatedAt", Value.fromBigInt(value));
+  }
 }
 
 export class Log extends Entity {
