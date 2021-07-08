@@ -22,6 +22,7 @@ export function handleTransfer(event: Transfer): void {
     }
 
     accountFrom.mana = accountFrom.mana.minus(event.params.value)
+    accountFrom.updatedAt = event.block.timestamp
     accountFrom.save()
   }
 
@@ -33,6 +34,7 @@ export function handleTransfer(event: Transfer): void {
     }
 
     accountTo.mana = accountTo.mana.plus(event.params.value)
+    accountTo.updatedAt = event.block.timestamp
     accountTo.save()
   }
 }
@@ -56,6 +58,7 @@ export function handleMint(event: Mint): void {
     }
 
     accountTo.mana = accountTo.mana.plus(event.params.amount)
+    accountTo.updatedAt = event.block.timestamp
     accountTo.save()
   }
 }
@@ -79,6 +82,7 @@ export function handleBurn(event: Burn): void {
     }
 
     accountFrom.mana = accountFrom.mana.minus(event.params.value)
+    accountFrom.updatedAt = event.block.timestamp
     accountFrom.save()
   }
 }
