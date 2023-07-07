@@ -1,6 +1,6 @@
 type Account @entity {
   id: ID! # ETH addr
-  mana: BigInt # Amount of mana owned
+  mana: BigInt! # Amount of mana owned
   updatedAt: BigInt!
 }
 

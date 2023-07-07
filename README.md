@@ -1,10 +1,12 @@
 # Decentraland MANA subgraph
 
-- Mainnet: https://thegraph.com/explorer/subgraph/decentraland/mana-ethereum-mainnet (QmVt1A6NAUVGeKZMG2FGs6jws6aHS1CtDgCrkuyD8fiEDW)
-- Ropsten: https://thegraph.com/explorer/subgraph/decentraland/mana-ethereum-ropsten (QmbnEMwrGF6eizBJHLWb4e1YBmru9wh9ED16WhENa2qJtM)
-- Goerli: https://thegraph.com/explorer/subgraph/decentraland/mana-ethereum-goerli (Qmcor92mZeSiiPEoA7jkp5kT9M9wuZPakXrKPURP2QJCtS)
-- Mumbai: https://thegraph.com/explorer/subgraph/decentraland/mana-matic-mumbai (QmSWsSgiH6Z5XDTQqfvPsUeGu6rskpLuQj6smuzcCxhf5x)
-- Matic: https://thegraph.com/explorer/subgraph/decentraland/mana-matic-mainnet (QmXC2m6ANv9Vut3FTVdahjAsN3hhVZWbncCfcQmjHzdbCe)
+|Network|Provider|URL|Current|Previous|
+|-|-|-|-|-|
+|Mainnet|Hosted Service|https://thegraph.com/explorer/subgraph/decentraland/mana-ethereum-mainnet|QmVt1A6NAUVGeKZMG2FGs6jws6aHS1CtDgCrkuyD8fiEDW|-|
+|Sepolia|Graph Studio|https://api.studio.thegraph.com/query/49472/mana-ethereum-sepolia/version/latest|QmdZfTJQRVEyiQAHJKEsexRvPcWuGbv7kjkY9vojUKcbBy|-|
+|Goerli|Hosted Service|https://thegraph.com/explorer/subgraph/decentraland/mana-ethereum-goerli|QmZ19ax1duD4XFcVtNwvkGSTnC91ZUWog7maBgtU6cMPis|-|
+|Matic|Hosted Service|https://thegraph.com/explorer/subgraph/decentraland/mana-matic-mainnet|QmXC2m6ANv9Vut3FTVdahjAsN3hhVZWbncCfcQmjHzdbCe|-|
+|Mumbai|Hosted Service|https://thegraph.com/explorer/subgraph/decentraland/mana-matic-mumbai|QmSWsSgiH6Z5XDTQqfvPsUeGu6rskpLuQj6smuzcCxhf5x|-|
 
 ### Install
 
