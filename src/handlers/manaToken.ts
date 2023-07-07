@@ -1,3 +1,4 @@
+import { BigInt } from '@graphprotocol/graph-ts'
 import { Transfer, Mint, Burn } from '../entities/ManaToken/ManaToken'
 import { Account, Log } from '../entities/schema'
 
@@ -19,6 +20,7 @@ export function handleTransfer(event: Transfer): void {
     let accountFrom = Account.load(accountFromId)
     if (accountFrom == null) {
       accountFrom = new Account(accountFromId)
+      accountFrom.mana = BigInt.fromI32(0)
     }
 
     accountFrom.mana = accountFrom.mana.minus(event.params.value)
@@ -31,6 +33,7 @@ export function handleTransfer(event: Transfer): void {
     let accountTo = Account.load(accountToId)
     if (accountTo == null) {
       accountTo = new Account(accountToId)
+      accountTo.mana = BigInt.fromI32(0)
     }
 
     accountTo.mana = accountTo.mana.plus(event.params.value)
@@ -55,6 +58,7 @@ export function handleMint(event: Mint): void {
     let accountTo = Account.load(accountToId)
     if (accountTo == null) {
       accountTo = new Account(accountToId)
+      accountTo.mana = BigInt.fromI32(0)
     }
 
     accountTo.mana = accountTo.mana.plus(event.params.amount)
@@ -79,6 +83,7 @@ export function handleBurn(event: Burn): void {
     let accountFrom = Account.load(accountFromId)
     if (accountFrom == null) {
       accountFrom = new Account(accountFromId)
+      accountFrom.mana = BigInt.fromI32(0)
     }
 
     accountFrom.mana = accountFrom.mana.minus(event.params.value)
