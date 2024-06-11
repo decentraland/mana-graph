@@ -23,7 +23,7 @@ export function handleTransfer(event: Transfer): void {
     }
 
     let mana = accountFrom.mana
-    if (mana !== null) {
+    if (mana != null) {
       mana = mana.minus(event.params.value)
     }
 
@@ -40,7 +40,7 @@ export function handleTransfer(event: Transfer): void {
     }
 
     let mana = accountTo.mana
-    if (mana !== null) {
+    if (mana != null) {
       mana = mana.plus(event.params.value)
     }
 
@@ -69,7 +69,7 @@ export function handleMint(event: Mint): void {
     }
 
     let mana = accountTo.mana
-    if (mana !== null) {
+    if (mana != null) {
       mana = mana.plus(event.params.amount)
     }
 
@@ -98,7 +98,7 @@ export function handleBurn(event: Burn): void {
     }
 
     let mana = accountFrom.mana
-    if (mana !== null) {
+    if (mana != null) {
       mana = mana.minus(event.params.value)
     }
 
