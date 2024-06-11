@@ -6,10 +6,9 @@ import {
   Value,
   ValueKind,
   store,
-  Address,
   Bytes,
   BigInt,
-  BigDecimal
+  BigDecimal,
 } from "@graphprotocol/graph-ts";
 
 export class Account extends Entity {
@@ -20,22 +19,31 @@ export class Account extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save Account entity without an ID");
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save Account entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("Account", id.toString(), this);
+    assert(id != null, "Cannot save Account entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        `Entities of type Account must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+      );
+      store.set("Account", id.toString(), this);
+    }
+  }
+
+  static loadInBlock(id: string): Account | null {
+    return changetype<Account | null>(store.get_in_block("Account", id));
   }
 
   static load(id: string): Account | null {
-    return store.get("Account", id) as Account | null;
+    return changetype<Account | null>(store.get("Account", id));
   }
 
   get id(): string {
     let value = this.get("id");
-    return value.toString();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toString();
+    }
   }
 
   set id(value: string) {
@@ -44,7 +52,7 @@ export class Account extends Entity {
 
   get mana(): BigInt | null {
     let value = this.get("mana");
-    if (value === null || value.kind == ValueKind.NULL) {
+    if (!value || value.kind == ValueKind.NULL) {
       return null;
     } else {
       return value.toBigInt();
@@ -52,16 +60,20 @@ export class Account extends Entity {
   }
 
   set mana(value: BigInt | null) {
-    if (value === null) {
+    if (!value) {
       this.unset("mana");
     } else {
-      this.set("mana", Value.fromBigInt(value as BigInt));
+      this.set("mana", Value.fromBigInt(<BigInt>value));
     }
   }
 
   get updatedAt(): BigInt {
     let value = this.get("updatedAt");
-    return value.toBigInt();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
   }
 
   set updatedAt(value: BigInt) {
@@ -77,22 +89,31 @@ export class Log extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save Log entity without an ID");
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save Log entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("Log", id.toString(), this);
+    assert(id != null, "Cannot save Log entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        `Entities of type Log must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+      );
+      store.set("Log", id.toString(), this);
+    }
+  }
+
+  static loadInBlock(id: string): Log | null {
+    return changetype<Log | null>(store.get_in_block("Log", id));
   }
 
   static load(id: string): Log | null {
-    return store.get("Log", id) as Log | null;
+    return changetype<Log | null>(store.get("Log", id));
   }
 
   get id(): string {
     let value = this.get("id");
-    return value.toString();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toString();
+    }
   }
 
   set id(value: string) {
@@ -101,7 +122,11 @@ export class Log extends Entity {
 
   get txHash(): string {
     let value = this.get("txHash");
-    return value.toString();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toString();
+    }
   }
 
   set txHash(value: string) {
@@ -110,7 +135,11 @@ export class Log extends Entity {
 
   get index(): BigInt {
     let value = this.get("index");
-    return value.toBigInt();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
   }
 
   set index(value: BigInt) {
@@ -119,7 +148,11 @@ export class Log extends Entity {
 
   get from(): string {
     let value = this.get("from");
-    return value.toString();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toString();
+    }
   }
 
   set from(value: string) {
@@ -128,7 +161,11 @@ export class Log extends Entity {
 
   get to(): string {
     let value = this.get("to");
-    return value.toString();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toString();
+    }
   }
 
   set to(value: string) {
@@ -137,7 +174,11 @@ export class Log extends Entity {
 
   get value(): BigInt {
     let value = this.get("value");
-    return value.toBigInt();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
   }
 
   set value(value: BigInt) {
@@ -146,7 +187,11 @@ export class Log extends Entity {
 
   get involved(): string {
     let value = this.get("involved");
-    return value.toString();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toString();
+    }
   }
 
   set involved(value: string) {
@@ -155,7 +200,11 @@ export class Log extends Entity {
 
   get time(): BigInt {
     let value = this.get("time");
-    return value.toBigInt();
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
   }
 
   set time(value: BigInt) {
