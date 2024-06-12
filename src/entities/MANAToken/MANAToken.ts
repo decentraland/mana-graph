@@ -7,7 +7,7 @@ import {
   Entity,
   Bytes,
   Address,
-  BigInt
+  BigInt,
 } from "@graphprotocol/graph-ts";
 
 export class Mint extends ethereum.Event {
@@ -163,7 +163,7 @@ export class MANAToken extends ethereum.SmartContract {
     let result = super.tryCall(
       "mintingFinished",
       "mintingFinished():(bool)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -190,7 +190,7 @@ export class MANAToken extends ethereum.SmartContract {
   approve(_spender: Address, _value: BigInt): boolean {
     let result = super.call("approve", "approve(address,uint256):(bool)", [
       ethereum.Value.fromAddress(_spender),
-      ethereum.Value.fromUnsignedBigInt(_value)
+      ethereum.Value.fromUnsignedBigInt(_value),
     ]);
 
     return result[0].toBoolean();
@@ -199,7 +199,7 @@ export class MANAToken extends ethereum.SmartContract {
   try_approve(_spender: Address, _value: BigInt): ethereum.CallResult<boolean> {
     let result = super.tryCall("approve", "approve(address,uint256):(bool)", [
       ethereum.Value.fromAddress(_spender),
-      ethereum.Value.fromUnsignedBigInt(_value)
+      ethereum.Value.fromUnsignedBigInt(_value),
     ]);
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -230,8 +230,8 @@ export class MANAToken extends ethereum.SmartContract {
       [
         ethereum.Value.fromAddress(_from),
         ethereum.Value.fromAddress(_to),
-        ethereum.Value.fromUnsignedBigInt(_value)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_value),
+      ],
     );
 
     return result[0].toBoolean();
@@ -240,7 +240,7 @@ export class MANAToken extends ethereum.SmartContract {
   try_transferFrom(
     _from: Address,
     _to: Address,
-    _value: BigInt
+    _value: BigInt,
   ): ethereum.CallResult<boolean> {
     let result = super.tryCall(
       "transferFrom",
@@ -248,8 +248,8 @@ export class MANAToken extends ethereum.SmartContract {
       [
         ethereum.Value.fromAddress(_from),
         ethereum.Value.fromAddress(_to),
-        ethereum.Value.fromUnsignedBigInt(_value)
-      ]
+        ethereum.Value.fromUnsignedBigInt(_value),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -291,7 +291,7 @@ export class MANAToken extends ethereum.SmartContract {
   mint(_to: Address, _amount: BigInt): boolean {
     let result = super.call("mint", "mint(address,uint256):(bool)", [
       ethereum.Value.fromAddress(_to),
-      ethereum.Value.fromUnsignedBigInt(_amount)
+      ethereum.Value.fromUnsignedBigInt(_amount),
     ]);
 
     return result[0].toBoolean();
@@ -300,7 +300,7 @@ export class MANAToken extends ethereum.SmartContract {
   try_mint(_to: Address, _amount: BigInt): ethereum.CallResult<boolean> {
     let result = super.tryCall("mint", "mint(address,uint256):(bool)", [
       ethereum.Value.fromAddress(_to),
-      ethereum.Value.fromUnsignedBigInt(_amount)
+      ethereum.Value.fromUnsignedBigInt(_amount),
     ]);
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -326,7 +326,7 @@ export class MANAToken extends ethereum.SmartContract {
 
   balanceOf(_owner: Address): BigInt {
     let result = super.call("balanceOf", "balanceOf(address):(uint256)", [
-      ethereum.Value.fromAddress(_owner)
+      ethereum.Value.fromAddress(_owner),
     ]);
 
     return result[0].toBigInt();
@@ -334,7 +334,7 @@ export class MANAToken extends ethereum.SmartContract {
 
   try_balanceOf(_owner: Address): ethereum.CallResult<BigInt> {
     let result = super.tryCall("balanceOf", "balanceOf(address):(uint256)", [
-      ethereum.Value.fromAddress(_owner)
+      ethereum.Value.fromAddress(_owner),
     ]);
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -406,7 +406,7 @@ export class MANAToken extends ethereum.SmartContract {
   transfer(_to: Address, _value: BigInt): boolean {
     let result = super.call("transfer", "transfer(address,uint256):(bool)", [
       ethereum.Value.fromAddress(_to),
-      ethereum.Value.fromUnsignedBigInt(_value)
+      ethereum.Value.fromUnsignedBigInt(_value),
     ]);
 
     return result[0].toBoolean();
@@ -415,7 +415,7 @@ export class MANAToken extends ethereum.SmartContract {
   try_transfer(_to: Address, _value: BigInt): ethereum.CallResult<boolean> {
     let result = super.tryCall("transfer", "transfer(address,uint256):(bool)", [
       ethereum.Value.fromAddress(_to),
-      ethereum.Value.fromUnsignedBigInt(_value)
+      ethereum.Value.fromUnsignedBigInt(_value),
     ]);
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -428,7 +428,10 @@ export class MANAToken extends ethereum.SmartContract {
     let result = super.call(
       "allowance",
       "allowance(address,address):(uint256)",
-      [ethereum.Value.fromAddress(_owner), ethereum.Value.fromAddress(_spender)]
+      [
+        ethereum.Value.fromAddress(_owner),
+        ethereum.Value.fromAddress(_spender),
+      ],
     );
 
     return result[0].toBigInt();
@@ -436,12 +439,15 @@ export class MANAToken extends ethereum.SmartContract {
 
   try_allowance(
     _owner: Address,
-    _spender: Address
+    _spender: Address,
   ): ethereum.CallResult<BigInt> {
     let result = super.tryCall(
       "allowance",
       "allowance(address,address):(uint256)",
-      [ethereum.Value.fromAddress(_owner), ethereum.Value.fromAddress(_spender)]
+      [
+        ethereum.Value.fromAddress(_owner),
+        ethereum.Value.fromAddress(_spender),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();

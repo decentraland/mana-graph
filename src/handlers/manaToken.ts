@@ -1,3 +1,4 @@
+import { BigInt } from '@graphprotocol/graph-ts'
 import { Transfer, Mint, Burn } from '../entities/ManaToken/ManaToken'
 import { Account, Log } from '../entities/schema'
 
@@ -21,7 +22,12 @@ export function handleTransfer(event: Transfer): void {
       accountFrom = new Account(accountFromId)
     }
 
-    accountFrom.mana = accountFrom.mana.minus(event.params.value)
+    let mana = accountFrom.mana
+    if (mana != null) {
+      mana = mana.minus(event.params.value)
+    }
+
+    accountFrom.mana = mana
     accountFrom.updatedAt = event.block.timestamp
     accountFrom.save()
   }
@@ -33,7 +39,12 @@ export function handleTransfer(event: Transfer): void {
       accountTo = new Account(accountToId)
     }
 
-    accountTo.mana = accountTo.mana.plus(event.params.value)
+    let mana = accountTo.mana
+    if (mana != null) {
+      mana = mana.plus(event.params.value)
+    }
+
+    accountTo.mana = mana
     accountTo.updatedAt = event.block.timestamp
     accountTo.save()
   }
@@ -57,7 +68,12 @@ export function handleMint(event: Mint): void {
       accountTo = new Account(accountToId)
     }
 
-    accountTo.mana = accountTo.mana.plus(event.params.amount)
+    let mana = accountTo.mana
+    if (mana != null) {
+      mana = mana.plus(event.params.amount)
+    }
+
+    accountTo.mana = mana
     accountTo.updatedAt = event.block.timestamp
     accountTo.save()
   }
@@ -81,7 +97,12 @@ export function handleBurn(event: Burn): void {
       accountFrom = new Account(accountFromId)
     }
 
-    accountFrom.mana = accountFrom.mana.minus(event.params.value)
+    let mana = accountFrom.mana
+    if (mana != null) {
+      mana = mana.minus(event.params.value)
+    }
+
+    accountFrom.mana = mana
     accountFrom.updatedAt = event.block.timestamp
     accountFrom.save()
   }

@@ -16,7 +16,7 @@ dataSources:
       startBlock: {{mana_start_block}}
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.3
+      apiVersion: 0.0.5
       language: wasm/assemblyscript
       file: ./src/handlers/manaToken.ts
       entities:
