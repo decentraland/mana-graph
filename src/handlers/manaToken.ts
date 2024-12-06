@@ -20,14 +20,11 @@ export function handleTransfer(event: Transfer): void {
     let accountFrom = Account.load(accountFromId)
     if (accountFrom == null) {
       accountFrom = new Account(accountFromId)
+      accountFrom.mana = BigInt.fromI32(0)
     }
 
-    let mana = accountFrom.mana
-    if (mana != null) {
-      mana = mana.minus(event.params.value)
-    }
-
-    accountFrom.mana = mana
+    let mana = accountFrom.mana ? (accountFrom.mana as BigInt) : BigInt.fromI32(0)
+    accountFrom.mana = mana.minus(event.params.value)
     accountFrom.updatedAt = event.block.timestamp
     accountFrom.save()
   }
@@ -37,14 +34,11 @@ export function handleTransfer(event: Transfer): void {
     let accountTo = Account.load(accountToId)
     if (accountTo == null) {
       accountTo = new Account(accountToId)
+      accountTo.mana = BigInt.fromI32(0)
     }
 
-    let mana = accountTo.mana
-    if (mana != null) {
-      mana = mana.plus(event.params.value)
-    }
-
-    accountTo.mana = mana
+    let mana = accountTo.mana ? (accountTo.mana as BigInt) : BigInt.fromI32(0)
+    accountTo.mana = mana.plus(event.params.value)
     accountTo.updatedAt = event.block.timestamp
     accountTo.save()
   }
@@ -66,14 +60,11 @@ export function handleMint(event: Mint): void {
     let accountTo = Account.load(accountToId)
     if (accountTo == null) {
       accountTo = new Account(accountToId)
+      accountTo.mana = BigInt.fromI32(0)
     }
 
-    let mana = accountTo.mana
-    if (mana != null) {
-      mana = mana.plus(event.params.amount)
-    }
-
-    accountTo.mana = mana
+    let mana = accountTo.mana ? (accountTo.mana as BigInt) : BigInt.fromI32(0)
+    accountTo.mana = mana.plus(event.params.amount)
     accountTo.updatedAt = event.block.timestamp
     accountTo.save()
   }
@@ -95,14 +86,11 @@ export function handleBurn(event: Burn): void {
     let accountFrom = Account.load(accountFromId)
     if (accountFrom == null) {
       accountFrom = new Account(accountFromId)
+      accountFrom.mana = BigInt.fromI32(0)
     }
 
-    let mana = accountFrom.mana
-    if (mana != null) {
-      mana = mana.minus(event.params.value)
-    }
-
-    accountFrom.mana = mana
+    let mana = accountFrom.mana ? (accountFrom.mana as BigInt) : BigInt.fromI32(0)
+    accountFrom.mana = mana.minus(event.params.value)
     accountFrom.updatedAt = event.block.timestamp
     accountFrom.save()
   }

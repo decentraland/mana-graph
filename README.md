@@ -2,13 +2,13 @@
 
 |Network|URL|Current|Previous|
 |-|-|-|-|
-|Mainnet (Graph Studio)|<https://thegraph.com/explorer/subgraph/decentraland/mana-ethereum-mainnet>|QmVt1A6NAUVGeKZMG2FGs6jws6aHS1CtDgCrkuyD8fiEDW|-|>
-|Mainnet (Satsuma)|<https://subgraph.satsuma-prod.com/decentraland/mana-ethereum-mainnet/playground>|QmQczDXEojGfYuw8BDGe65voCSTyTizSVRK1Bbo15Ct9eb|-|>
+|Mainnet (Graph Studio)|<https://thegraph.com/explorer/subgraph/decentraland/mana-ethereum-mainnet>|QmVt1A6NAUVGeKZMG2FGs6jws6aHS1CtDgCrkuyD8fiEDW||>
+|Mainnet (Satsuma)|<https://subgraph.satsuma-prod.com/decentraland/mana-ethereum-mainnet/playground>|Qmcd7q25VBqviSKnqRyHc6FZbtSSa5wkPa1tvEFDgKEY2Z|QmQczDXEojGfYuw8BDGe65voCSTyTizSVRK1Bbo15Ct9eb|>
 |Ropsten (Hosted Service)|<https://thegraph.com/explorer/subgraph/decentraland/mana-ethereum-ropsten>|QmbnEMwrGF6eizBJHLWb4e1YBmru9wh9ED16WhENa2qJtM|-|>
 |Goerli (Hosted Service)|<https://thegraph.com/explorer/subgraph/decentraland/mana-ethereum-goerli>|Qmcor92mZeSiiPEoA7jkp5kT9M9wuZPakXrKPURP2QJCtS|-|>
 |Mumbai (Hosted Service)|<https://thegraph.com/explorer/subgraph/decentraland/mana-matic-mumbai>|QmSWsSgiH6Z5XDTQqfvPsUeGu6rskpLuQj6smuzcCxhf5x|-|>
 |Matic (Graph Studio)|<https://thegraph.com/explorer/subgraph/decentraland/mana-matic-mainnet>|QmXC2m6ANv9Vut3FTVdahjAsN3hhVZWbncCfcQmjHzdbCe|-|>
-|Matic (Satsuma)|<https://subgraph.satsuma-prod.com/decentraland/mana-matic-mainnet/playground>|QmZ8MyqFUs1dcKHpAKgVBFDRnACLv3ZMJAPjrLf3bU1H1D|-|>
+|Matic (Satsuma)|<https://subgraph.satsuma-prod.com/decentraland/mana-matic-mainnet/playground>|QmXDYh7QGtcQfkTDRRK8nHTLanREueu31KjWfmG9yRW4T4|QmZ8MyqFUs1dcKHpAKgVBFDRnACLv3ZMJAPjrLf3bU1H1D|>
 
 ### Install
 
