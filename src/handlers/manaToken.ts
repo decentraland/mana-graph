@@ -22,12 +22,8 @@ export function handleTransfer(event: Transfer): void {
       accountFrom = new Account(accountFromId)
     }
 
-    let mana = accountFrom.mana
-    if (mana != null) {
-      mana = mana.minus(event.params.value)
-    }
-
-    accountFrom.mana = mana
+    let mana = accountFrom.mana || BigInt.fromI32(0)
+    accountFrom.mana = mana.minus(event.params.value)
     accountFrom.updatedAt = event.block.timestamp
     accountFrom.save()
   }
@@ -39,12 +35,8 @@ export function handleTransfer(event: Transfer): void {
       accountTo = new Account(accountToId)
     }
 
-    let mana = accountTo.mana
-    if (mana != null) {
-      mana = mana.plus(event.params.value)
-    }
-
-    accountTo.mana = mana
+    let mana = accountTo.mana || BigInt.fromI32(0)
+    accountTo.mana = mana.plus(event.params.value)
     accountTo.updatedAt = event.block.timestamp
     accountTo.save()
   }
@@ -68,12 +60,8 @@ export function handleMint(event: Mint): void {
       accountTo = new Account(accountToId)
     }
 
-    let mana = accountTo.mana
-    if (mana != null) {
-      mana = mana.plus(event.params.amount)
-    }
-
-    accountTo.mana = mana
+    let mana = accountTo.mana || BigInt.fromI32(0)
+    accountTo.mana = mana.plus(event.params.amount)
     accountTo.updatedAt = event.block.timestamp
     accountTo.save()
   }
@@ -97,12 +85,8 @@ export function handleBurn(event: Burn): void {
       accountFrom = new Account(accountFromId)
     }
 
-    let mana = accountFrom.mana
-    if (mana != null) {
-      mana = mana.minus(event.params.value)
-    }
-
-    accountFrom.mana = mana
+    let mana = accountFrom.mana || BigInt.fromI32(0)
+    accountFrom.mana = mana.minus(event.params.value)
     accountFrom.updatedAt = event.block.timestamp
     accountFrom.save()
   }
