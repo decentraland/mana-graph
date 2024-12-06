@@ -20,6 +20,7 @@ export function handleTransfer(event: Transfer): void {
     let accountFrom = Account.load(accountFromId)
     if (accountFrom == null) {
       accountFrom = new Account(accountFromId)
+      accountFrom.mana = BigInt.fromI32(0)
     }
 
     let mana = accountFrom.mana || BigInt.fromI32(0)
@@ -33,6 +34,7 @@ export function handleTransfer(event: Transfer): void {
     let accountTo = Account.load(accountToId)
     if (accountTo == null) {
       accountTo = new Account(accountToId)
+      accountTo.mana = BigInt.fromI32(0)
     }
 
     let mana = accountTo.mana || BigInt.fromI32(0)
@@ -58,6 +60,7 @@ export function handleMint(event: Mint): void {
     let accountTo = Account.load(accountToId)
     if (accountTo == null) {
       accountTo = new Account(accountToId)
+      accountTo.mana = BigInt.fromI32(0)
     }
 
     let mana = accountTo.mana || BigInt.fromI32(0)
@@ -83,6 +86,7 @@ export function handleBurn(event: Burn): void {
     let accountFrom = Account.load(accountFromId)
     if (accountFrom == null) {
       accountFrom = new Account(accountFromId)
+      accountFrom.mana = BigInt.fromI32(0)
     }
 
     let mana = accountFrom.mana || BigInt.fromI32(0)
